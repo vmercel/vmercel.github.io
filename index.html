@@ -3,205 +3,940 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mercel Vubangsi - Portfolio</title>
+    <title>Mercel Vubangsi - Data Scientist & ML Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
+        :root {
+            --primary: #6C63FF;
+            --secondary: #4D44DB;
+            --accent: #FF6584;
+            --dark: #2D3748;
+            --light: #F7FAFC;
+            --gray: #718096;
+            --light-gray: #E2E8F0;
+            --success: #48BB78;
+            --warning: #ED8936;
+            --info: #4299E1;
+        }
+        
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            box-sizing: border-box;
         }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9ff;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
         .container {
-            max-width: 800px;
-            margin: 20px auto;
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
-            background: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        h1, h2, h3 {
-            color: #333;
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px 0;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(108, 99, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: gradientShift 8s ease infinite;
+            background-size: 200% 200%;
         }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .profile {
+            display: flex;
+            align-items: center;
+        }
+        
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-pic:hover {
+            transform: scale(1.05);
+        }
+        
+        .profile-info {
+            margin-left: 30px;
+        }
+        
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: -0.5px;
         }
-        h2 {
-            font-size: 1.8em;
-            margin-top: 20px;
-            border-bottom: 2px solid #333;
-            padding-bottom: 5px;
+        
+        .title {
+            font-size: 1.2rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 15px;
         }
-        h3 {
-            font-size: 1.4em;
-            margin-top: 15px;
-        }
-        p {
-            margin: 10px 0;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        ul li {
-            background: #f9f9f9;
-            margin: 5px 0;
-            padding: 10px;
-            border-left: 4px solid #333;
-        }
-        a {
-            color: #333;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
+        
         .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .contact-item i {
+            margin-right: 8px;
+            font-size: 1rem;
+        }
+        
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .contact-item a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Floating elements animation */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 15s linear infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
+        }
+        
+        /* Main Content Styles */
+        .resume-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .resume-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
             margin-bottom: 20px;
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
         }
-        .contact-info p {
-            margin: 5px 0;
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
         }
-        .project, .experience, .education {
-            margin-bottom: 20px;
-        }
-        .project h3, .experience h3, .education h3 {
-            margin-bottom: 10px;
-        }
-        .project p, .experience p, .education p {
-            margin: 5px 0;
-        }
-        .certifications, .publications {
-            margin-bottom: 20px;
-        }
-        .certifications ul, .publications ul {
+        
+        .section-content {
             padding-left: 20px;
         }
-        .certifications ul li, .publications ul li {
-            background: none;
-            border-left: none;
-            padding: 5px 0;
+        
+        /* Objective Section */
+        .objective-text {
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        /* Education Section */
+        .education-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px dashed var(--light-gray);
+            position: relative;
+        }
+        
+        .education-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .education-degree {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .education-school {
+            font-weight: 500;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+        
+        .education-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .education-date {
+            color: var(--gray);
+        }
+        
+        .education-gpa {
+            background: var(--primary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .education-thesis {
+            font-style: italic;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-category {
+            background: var(--light);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .skill-category h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background: white;
+            color: var(--dark);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+        
+        /* Experience Section */
+        .experience-item {
+            margin-bottom: 30px;
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            align-items: flex-start;
+        }
+        
+        .experience-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+        
+        .experience-company {
+            font-weight: 500;
+            color: var(--secondary);
+        }
+        
+        .experience-date {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        
+        .experience-location {
+            font-style: italic;
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .experience-details {
+            padding-left: 20px;
+        }
+        
+        .experience-details li {
+            margin-bottom: 10px;
+            position: relative;
+            list-style-type: none;
+        }
+        
+        .experience-details li::before {
+            content: '▹';
+            position: absolute;
+            left: -20px;
+            color: var(--accent);
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-top: 3px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+        
+        .project-description {
+            font-size: 0.95rem;
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .project-tech span {
+            background: var(--light);
+            color: var(--dark);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        /* Certifications Section */
+        .certification-item {
+            margin-bottom: 15px;
+        }
+        
+        .certification-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .certification-issuer {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        
+        .certification-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 5px;
+            transition: color 0.3s;
+        }
+        
+        .certification-link:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                padding: 0 20px;
+            }
+            
+            .profile {
+                flex-direction: column;
+                margin-bottom: 20px;
+            }
+            
+            .profile-info {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+            
+            .contact-info {
+                justify-content: center;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .title {
+                font-size: 1rem;
+            }
+            
+            .education-details {
+                flex-direction: column;
+            }
+            
+            .education-gpa {
+                margin-top: 5px;
+                align-self: flex-start;
+            }
+            
+            .experience-header {
+                flex-direction: column;
+            }
+            
+            .experience-date {
+                margin-top: 5px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Header with Profile -->
         <header>
-            <h1>Mercel Vubangsi</h1>
-            <p>Machine Learning Engineer | Full Stack Developer</p>
-            <div class="contact-info">
-                <p>1000 N 4th St, MR 127, Fairfield, IA, 52557</p>
-                <p>Tel: <a href="tel:+16414514295">+1 641 451 4295</a> | Email: <a href="mailto:ymercel@gmail.com">ymercel@gmail.com</a></p>
+            <!-- Floating animation elements -->
+            <div class="floating-elements">
+                <div class="floating-element" style="width: 50px; height: 50px; left: 10%; animation-delay: 0s;"></div>
+                <div class="floating-element" style="width: 30px; height: 30px; left: 25%; animation-delay: 2s;"></div>
+                <div class="floating-element" style="width: 40px; height: 40px; left: 50%; animation-delay: 4s;"></div>
+                <div class="floating-element" style="width: 60px; height: 60px; left: 70%; animation-delay: 6s;"></div>
+                <div class="floating-element" style="width: 20px; height: 20px; left: 85%; animation-delay: 8s;"></div>
+            </div>
+            
+            <div class="header-content">
+                <div class="profile">
+                    <img src="mercel.png" alt="Mercel Vubangsi" class="profile-pic">
+                    <div class="profile-info">
+                        <h1>Mercel Vubangsi</h1>
+                        <div class="title">Data Scientist & Machine Learning Engineer</div>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <a href="tel:+16412331997">+1-641-233-1997</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:vmercel@outlook.fr">vmercel@outlook.fr</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Fairfield, IA</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fab fa-linkedin"></i>
+                                <a href="https://www.linkedin.com/in/mercel-vubangsi-68109b23a" target="_blank">LinkedIn Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </header>
-
-        <section class="professional-summary">
-            <h2>Professional Summary</h2>
-            <p>Dedicated Machine Learning Engineer with extensive experience in deploying AI models and developing scalable applications. Proficient in Python, Java, and C++, with a strong background in cloud technologies and MLOps. Proven track record of enhancing system performance and delivering impactful solutions in real-time environments. Excellent collaboration skills, committed to driving project success through effective communication and technical expertise.</p>
-        </section>
-
-        <section class="core-competencies">
-            <h2>Core Competencies</h2>
-            <ul>
-                <li><strong>Programming Languages:</strong> Python, Java, C++, JavaScript, Go, Swift</li>
-                <li><strong>Machine Learning Models:</strong> XGBoost, Random Forest, Time Series Forecasting, Transformers (BERT, GPT)</li>
-                <li><strong>Cloud Technologies:</strong> Azure ML, Azure OpenAI, MLOps, PySpark</li>
-                <li><strong>ML Tools & Frameworks:</strong> PyTorch, TensorFlow, Keras, Scikit-learn</li>
-                <li><strong>Database Systems:</strong> SQL, NoSQL, PostgreSQL, MongoDB</li>
-                <li><strong>End-to-End ML Lifecycle Management:</strong> Model development, deployment, performance evaluation, explainability</li>
-            </ul>
-        </section>
-
-        <section class="key-projects">
-            <h2>Key Projects</h2>
-            <div class="project">
-                <h3>Azure-Based Large Language Model Deployment for E-Commerce Automation</h3>
-                <p><strong>Technologies:</strong> Azure ML, Hugging Face, GPT, PyTorch</p>
-                <p><strong>Purpose:</strong> Developed and deployed a customer service automation system using a large language model to process natural language queries.</p>
-                <p><strong>Impact:</strong> Reduced customer response time by 70%, significantly enhancing user satisfaction and operational efficiency.</p>
-                <p><strong>Role:</strong> Led the integration of AI models, coordinated with cross-functional teams, and ensured seamless deployment in a cloud environment.</p>
-            </div>
-            <div class="project">
-                <h3>Predictive Maintenance System Using Time Series Forecasting</h3>
-                <p><strong>Technologies:</strong> Python, TensorFlow, Azure ML, SQL</p>
-                <p><strong>Purpose:</strong> Created a predictive maintenance system for a manufacturing client to forecast equipment failures.</p>
-                <p><strong>Impact:</strong> Increased equipment uptime by 30% and reduced maintenance costs by 20%, contributing to significant cost savings.</p>
-                <p><strong>Role:</strong> Conducted data analysis, developed forecasting algorithms, and collaborated with stakeholders to refine system requirements.</p>
-            </div>
-            <div class="project">
-                <h3>Multi-class Neural Network Classification for Remote Health Monitoring</h3>
-                <p><strong>Technologies:</strong> PyTorch, Keras, Deep Attention, IoT</p>
-                <p><strong>Purpose:</strong> Implemented a neural network architecture for a remote health monitoring application to classify patient data from wearable devices.</p>
-                <p><strong>Impact:</strong> Achieved over 92% accuracy in classification tasks, improving patient monitoring and early disease detection capabilities.</p>
-                <p><strong>Role:</strong> Designed the model architecture, optimized performance through hyperparameter tuning, and validated outcomes with clinical teams.</p>
-            </div>
-            <div class="project">
-                <h3>Scalable ML Pipeline for Cybersecurity Anomaly Detection</h3>
-                <p><strong>Technologies:</strong> Python, PySpark, Azure ML, XGBoost</p>
-                <p><strong>Purpose:</strong> Built a scalable ML pipeline to detect cybersecurity anomalies in real-time systems.</p>
-                <p><strong>Impact:</strong> Increased detection accuracy by 85% and improved system response times by 40%, enhancing security measures for clients.</p>
-                <p><strong>Role:</strong> Integrated big data processing techniques, managed end-to-end pipeline development, and collaborated with security teams for effective deployment.</p>
+        
+        <!-- Objective Section -->
+        <section class="resume-section animate-fade delay-1">
+            <h2>Objective</h2>
+            <div class="section-content">
+                <p class="objective-text">
+                    Data Scientist and Machine Learning Engineer with over 12 years of experience in data engineering, machine learning, and analytics across healthcare, materials science, and IoT. Expert in building scalable data pipelines and deploying AI solutions using Python, TensorFlow, PyTorch, Spark, and cloud platforms (AWS, GCP, Azure). Skilled in end-to-end ML workflows, leveraging LangChain, LangGraph, and Retrieval-Augmented Generation (RAG) for agentic AI, and integrating multimodal LLMs and real-time analytics. Dedicated to enhancing efficiency and innovation through MLOps, quality assurance, and strategic problem-solving.
+                </p>
             </div>
         </section>
-
-        <section class="professional-experience">
-            <h2>Professional Experience</h2>
-            <div class="experience">
-                <h3>Machine Learning Engineer / Researcher</h3>
-                <p><strong>International Research Centre for AI and IoT, Near East University</strong></p>
-                <p><strong>September 2022 – June 2023</strong></p>
-                <ul>
-                    <li>Spearheaded multiple AI projects, focusing on large language models and cloud-based machine learning solutions.</li>
-                    <li>Collaborated with cross-functional teams to design and implement models for real-time data processing.</li>
-                    <li>Developed deployment frameworks utilizing Azure ML and MLOps best practices, ensuring high availability and reliability.</li>
-                    <li>Conducted performance evaluations and model tuning, resulting in significant improvements to model accuracy and efficiency.</li>
-                    <li>Provided mentorship to junior engineers, enhancing team knowledge and skills in machine learning techniques.</li>
-                </ul>
-            </div>
-            <div class="experience">
-                <h3>Full Stack Developer / Machine Learning Engineer</h3>
-                <p><strong>Freelance Projects</strong></p>
-                <p><strong>2018 – Present</strong></p>
-                <ul>
-                    <li>Designed and deployed AI-powered applications, specializing in scalable architectures for cloud environments.</li>
-                    <li>Developed and optimized machine learning solutions for various clients, ensuring seamless integration into existing systems.</li>
-                    <li>Collaborated with clients to define project requirements and deliver high-quality solutions tailored to their needs.</li>
-                    <li>Utilized Python and JavaScript to create user-friendly interfaces, improving client interaction and satisfaction.</li>
-                    <li>Implemented robust testing frameworks to ensure code quality and reliability across multiple projects.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="education">
+        
+        <!-- Education Section -->
+        <section class="resume-section animate-fade delay-2">
             <h2>Education</h2>
-            <div class="education">
-                <h3>MSc. AI Engineering (Embedded Systems and Mobile IoT Applications)</h3>
-                <p><strong>Near East University, Northern Cyprus</strong> (2023)</p>
-                <p>Focused on AI-driven IoT solutions for healthcare, including mobile health monitoring applications.</p>
-            </div>
-            <div class="education">
-                <h3>BSc. Software Engineering</h3>
-                <p><strong>University of Bamenda, Cameroon</strong> (2020)</p>
-                <p>Specialized in computational modeling for semiconductor nanostructures and machine learning applications.</p>
+            <div class="section-content">
+                <div class="education-item">
+                    <div class="education-degree">Master of Science in Computer Science</div>
+                    <div class="education-school">Maharishi International University</div>
+                    <div class="education-details">
+                        <div class="education-date">Expected 2024–2027</div>
+                    </div>
+                    <div class="education-thesis">Relevant Coursework: Advanced Machine Learning, Big Data Engineering, Cloud-Native Architectures, Deep Learning, MLOps, Agentic AI Systems</div>
+                </div>
+                
+                <div class="education-item">
+                    <div class="education-degree">Master of Science in Artificial Intelligence Engineering</div>
+                    <div class="education-school">Near East University</div>
+                    <div class="education-details">
+                        <div class="education-date">2022–2023</div>
+                        <div class="education-gpa">GPA: 3.75/4.0</div>
+                    </div>
+                    <div class="education-thesis">Thesis: Real-Time Predictive Analytics for IoT Healthcare Systems Using Ensemble Learning and LangGraph</div>
+                </div>
+                
+                <div class="education-item">
+                    <div class="education-degree">Bachelor of Technology in Software Engineering</div>
+                    <div class="education-school">HIBUMS Polytechnic</div>
+                    <div class="education-details">
+                        <div class="education-date">2018–2020</div>
+                        <div class="education-gpa">GPA: 3.8/4.0</div>
+                    </div>
+                    <div class="education-thesis">Capstone Project: Scalable Resource Optimization System Using ML and Linear Programming</div>
+                </div>
+                
+                <div class="education-item">
+                    <div class="education-degree">PhD in Computational Physics</div>
+                    <div class="education-school">The University of Dschang, Cameroon</div>
+                    <div class="education-details">
+                        <div class="education-date">2013–2017</div>
+                        <div class="education-gpa">Grade: Honors</div>
+                    </div>
+                    <div class="education-thesis">Dissertation: ML-Enhanced Quantum Transport Modeling in Nanostructures with Graph Neural Networks</div>
+                </div>
+                
+                <div class="education-item">
+                    <div class="education-degree">MSc. in Computational Physics</div>
+                    <div class="education-school">The University of Dschang, Cameroon</div>
+                    <div class="education-details">
+                        <div class="education-date">2009–2012</div>
+                        <div class="education-gpa">GPA: 3.7/4.0</div>
+                    </div>
+                    <div class="education-thesis">Thesis: Modeling Quantum Coherence in Noisy Environments</div>
+                </div>
+                
+                <div class="education-item">
+                    <div class="education-degree">Bachelor of Science in Physics</div>
+                    <div class="education-school">University of Yaounde I</div>
+                    <div class="education-details">
+                        <div class="education-date">2002–2005</div>
+                        <div class="education-gpa">GPA: 14/20</div>
+                    </div>
+                </div>
             </div>
         </section>
-
-        <section class="certifications">
+        
+        <!-- Skills Section -->
+        <section class="resume-section animate-fade delay-3">
+            <h2>Skills</h2>
+            <div class="section-content">
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>Machine Learning</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">Scikit-learn</span>
+                            <span class="skill-tag">XGBoost</span>
+                            <span class="skill-tag">LightGBM</span>
+                            <span class="skill-tag">Keras</span>
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">NumPy</span>
+                            <span class="skill-tag">SciPy</span>
+                            <span class="skill-tag">Hugging Face</span>
+                            <span class="skill-tag">LangChain</span>
+                            <span class="skill-tag">LangGraph</span>
+                            <span class="skill-tag">OpenCV</span>
+                            <span class="skill-tag">ONNX</span>
+                            <span class="skill-tag">LLaMA</span>
+                            <span class="skill-tag">GPT-4o</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Programming</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Scala</span>
+                            <span class="skill-tag">Go</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">FastAPI</span>
+                            <span class="skill-tag">Flask</span>
+                            <span class="skill-tag">Django</span>
+                            <span class="skill-tag">GraphQL</span>
+                            <span class="skill-tag">Rust</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Cloud & MLOps</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">AWS (SageMaker, Bedrock)</span>
+                            <span class="skill-tag">GCP (Vertex AI, BigQuery)</span>
+                            <span class="skill-tag">Azure (Synapse, ML Studio)</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Kubernetes</span>
+                            <span class="skill-tag">MLflow</span>
+                            <span class="skill-tag">Kubeflow</span>
+                            <span class="skill-tag">ArgoCD</span>
+                            <span class="skill-tag">Terraform</span>
+                            <span class="skill-tag">Ray</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Data Engineering</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Apache Spark</span>
+                            <span class="skill-tag">Apache Kafka</span>
+                            <span class="skill-tag">Apache Airflow</span>
+                            <span class="skill-tag">Delta Lake</span>
+                            <span class="skill-tag">Snowflake</span>
+                            <span class="skill-tag">Databricks</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">Cassandra</span>
+                            <span class="skill-tag">Redis</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Visualization</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Tableau</span>
+                            <span class="skill-tag">Power BI</span>
+                            <span class="skill-tag">Looker</span>
+                            <span class="skill-tag">Plotly</span>
+                            <span class="skill-tag">Streamlit</span>
+                            <span class="skill-tag">Matplotlib</span>
+                            <span class="skill-tag">Seaborn</span>
+                            <span class="skill-tag">Gradio</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Quality Assurance</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">ML Model Monitoring</span>
+                            <span class="skill-tag">Drift Detection</span>
+                            <span class="skill-tag">PyTest</span>
+                            <span class="skill-tag">Great Expectations</span>
+                            <span class="skill-tag">A/B Testing</span>
+                            <span class="skill-tag">Gurobi</span>
+                            <span class="skill-tag">Optuna</span>
+                            <span class="skill-tag">Hyperopt</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Experience Section -->
+        <section class="resume-section animate-fade delay-4">
+            <h2>Professional Experience</h2>
+            <div class="section-content">
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Senior Data Scientist / Machine Learning Engineer</div>
+                            <div class="experience-company">Near East AI and IoT Innovation Center</div>
+                        </div>
+                        <div class="experience-date">Jul 2022–Aug 2024</div>
+                    </div>
+                    <div class="experience-location">Nicosia, North Cyprus</div>
+                    <ul class="experience-details">
+                        <li>Deployed a generative AI healthcare assistant using LangChain, LangGraph, and RAG with LLaMA on AWS Bedrock, fine-tuning multimodal LLMs to reduce patient query resolution time by 25% and improve satisfaction by 15% for 10,000+ interactions, utilizing Python decorators for API optimization.</li>
+                        <li>Built a real-time IoT predictive maintenance system with PyTorch, Kafka, and LangGraph, using LSTMs and agentic AI to cut downtime by 30% across 50+ deployments, saving $2M annually, with context managers for resource handling.</li>
+                        <li>Developed an anomaly detection pipeline with Databricks, XGBoost, and Delta Lake, integrating LangChain and RAG for drift detection, achieving 95% precision and reducing false positives by 40% in hospitals.</li>
+                        <li>Orchestrated an MLOps pipeline with Kubeflow, MLflow, and ArgoCD, leveraging LangGraph for agentic workflows, cutting model iteration cycles by 50% and ensuring 99.9% uptime for 20+ models.</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Lead Data Engineer / Machine Learning Engineer</div>
+                            <div class="experience-company">Advanced Materials Analytics Lab</div>
+                        </div>
+                        <div class="experience-date">Dec 2019–Mar 2022</div>
+                    </div>
+                    <div class="experience-location">Bambili, Cameroon</div>
+                    <ul class="experience-details">
+                        <li>Architected a Spark-based data lake with Delta Lake and Airflow, using LangGraph to process 100TB+ datasets, achieving 10x faster processing for 200+ researchers, with Python generators for data streaming.</li>
+                        <li>Developed a TensorFlow ensemble model with PCA and t-SNE, using LangChain and RAG for feature selection, predicting material properties with 92% accuracy, cutting costs by 20% for 50+ experiments.</li>
+                        <li>Built a real-time visualization platform with FastAPI and Plotly, embedding ML predictions via LangGraph, adopted by 50+ scientists.</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Data Scientist / Computational Engineer</div>
+                            <div class="experience-company">Quantum Systems, Electronics and Signal Processing Lab</div>
+                        </div>
+                        <div class="experience-date">Jul 2017–Dec 2019</div>
+                    </div>
+                    <div class="experience-location">Dschang, Cameroon</div>
+                    <ul class="experience-details">
+                        <li>Developed a CNN-based classifier with TensorFlow and LangChain, using RAG for spectroscopy analysis, achieving 90% accuracy for 10,000+ samples.</li>
+                        <li>Optimized quantum transport simulations with PyTorch, Quantum Espresso, and LangGraph, improving efficiency by 35%, saving 1,000+ hours.</li>
+                        <li>Built a scalable data pipeline with Apache Kafka and PostgreSQL, using LangGraph for 1M+ daily simulation records, supporting 500+ simulations.</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Full Stack Data Engineer (Freelance)</div>
+                            <div class="experience-company">Cyprus-Massachusetts Tech Incubator</div>
+                        </div>
+                        <div class="experience-date">Mar 2022–Jul 2022</div>
+                    </div>
+                    <div class="experience-location">Nicosia, North Cyprus</div>
+                    <ul class="experience-details">
+                        <li>Developed a school management system with TypeScript, FastAPI, and Scikit-learn, using LangGraph for resource allocation, reducing conflicts by 25% for 10,000+ users.</li>
+                        <li>Built GraphQL APIs with MongoDB and Redis, using LangChain and RAG for query optimization, achieving sub-100ms response times for 10,000+ users.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Projects Section -->
+        <section class="resume-section animate-fade delay-5">
+            <h2>Projects</h2>
+            <div class="section-content">
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3 class="project-title">Personalized Diet Planner</h3>
+                        <p class="project-description">Built a Python-based system with Scikit-learn, LangChain, and RAG, achieving 90% user satisfaction; validated with Great Expectations and LangGraph.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>Scikit-learn</span>
+                            <span>LangChain</span>
+                            <span>RAG</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3 class="project-title">Financial Risk Platform</h3>
+                        <p class="project-description">Developed a Java-based app with XGBoost and LangGraph, optimizing savings with RAG, achieving 95% accuracy; tested with A/B frameworks.</p>
+                        <div class="project-tech">
+                            <span>Java</span>
+                            <span>XGBoost</span>
+                            <span>LangGraph</span>
+                            <span>A/B Testing</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3 class="project-title">Smart Campus System</h3>
+                        <p class="project-description">Created a PyTorch-based system with DQN and LangChain, reducing costs by 20% with agentic workflows; validated statistically.</p>
+                        <div class="project-tech">
+                            <span>PyTorch</span>
+                            <span>DQN</span>
+                            <span>LangChain</span>
+                            <span>Agentic AI</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3 class="project-title">Fraud Detection Engine</h3>
+                        <p class="project-description">Engineered a LightGBM-based system with Spark and LangGraph, achieving 98% precision with RAG-based drift detection.</p>
+                        <div class="project-tech">
+                            <span>LightGBM</span>
+                            <span>Spark</span>
+                            <span>LangGraph</span>
+                            <span>Drift Detection</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3 class="project-title">Medical Imaging AI</h3>
+                        <p class="project-description">Developed a TensorFlow CNN with OpenCV and LangChain, improving diagnostic speed by 30% with RAG; cross-validated.</p>
+                        <div class="project-tech">
+                            <span>TensorFlow</span>
+                            <span>OpenCV</span>
+                            <span>CNN</span>
+                            <span>LangChain</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3 class="project-title">Quantum Transport Model</h3>
+                        <p class="project-description">Built a PyTorch model with LangGraph, enhancing simulation speed by 25% with transfer learning and RAG.</p>
+                        <div class="project-tech">
+                            <span>PyTorch</span>
+                            <span>Quantum Physics</span>
+                            <span>LangGraph</span>
+                            <span>RAG</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Certifications Section -->
+        <section class="resume-section animate-fade">
             <h2>Certifications</h2>
-            <ul>
-                <li><strong>Materials Data Sciences and Informatics</strong> – Georgia Institute of Technology, USA.</li>
-            </ul>
+            <div class="section-content">
+                <div class="certification-item">
+                    <div class="certification-title">Materials Data Sciences and Informatics</div>
+                    <div class="certification-issuer">Georgia Institute of Technology, Coursera</div>
+                    <a href="https://www.coursera.org/verify/8B3NGCTQ8NNU" class="certification-link" target="_blank">View Certification</a>
+                </div>
+            </div>
         </section>
-
-        <section class="publications">
-            <h2>Publications</h2>
-            <ul>
-                <li><strong>Optimizing Moving Target Defense for Cyber Anomaly Detection</strong> – 2023 International Conference on Computational Intelligence.</li>
-                <li><strong>Applications of Transformer Attention Mechanisms in Information Security</strong> – 2022 International Conference on AIoTCs.</li>
-            </ul>
-            <p>(Full list of publications available upon request or at Google Scholar)</p>
-        </section>
+        
+        <footer>
+            &copy; 2024 Mercel Vubangsi. All rights reserved.
+        </footer>
     </div>
+    
+    <script>
+        // Add intersection observer for scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.resume-section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // Create floating elements dynamically
+            const floatingContainer = document.querySelector('.floating-elements');
+            for (let i = 0; i < 15; i++) {
+                const element = document.createElement('div');
+                element.classList.add('floating-element');
+                
+                // Random size between 20px and 70px
+                const size = Math.floor(Math.random() * 50) + 20;
+                
+                // Random position
+                const left = Math.floor(Math.random() * 100);
+                
+                // Random animation delay
+                const delay = Math.floor(Math.random() * 10);
+                
+                // Random animation duration
+                const duration = Math.floor(Math.random() * 10) + 10;
+                
+                element.style.width = `${size}px`;
+                element.style.height = `${size}px`;
+                element.style.left = `${left}%`;
+                element.style.animationDelay = `${delay}s`;
+                element.style.animationDuration = `${duration}s`;
+                
+                floatingContainer.appendChild(element);
+            }
+        });
+    </script>
 </body>
 </html>
